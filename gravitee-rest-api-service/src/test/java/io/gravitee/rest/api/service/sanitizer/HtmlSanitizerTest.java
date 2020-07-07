@@ -56,7 +56,7 @@ public class HtmlSanitizerTest {
         HtmlSanitizer.SanitizeInfos sanitizeInfos = HtmlSanitizer.isSafe(getNotSafe());
 
         assertFalse(sanitizeInfos.isSafe());
-        assertEquals("The content [<script src=\"/external.jpg\"><div onClick=\"alert('test');\">onclick alert<div>] is not allowed (~line 1)", sanitizeInfos.getRejectedMessage());
+        assertEquals("The content [<script src=\"/external.jpg\"><div onClick=\"alert('test');\" style=\"margin:auto\">onclick alert<div>] is not allowed (~line 1)", sanitizeInfos.getRejectedMessage());
     }
 
     private String getSafe() {
@@ -77,7 +77,7 @@ public class HtmlSanitizerTest {
 
         String html = "";
         html += "<script src=\"/external.jpg\" />";
-        html += "<div onClick=\"alert('test');\">onclick alert<div>";
+        html += "<div onClick=\"alert('test');\" style=\"margin: auto\">onclick alert<div>";
 
         return html;
     }
